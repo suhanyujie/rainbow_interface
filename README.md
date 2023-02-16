@@ -1,5 +1,5 @@
-# throw_interface
-throw 接口定义。
+# interface
+接口、结构体的定义
 
 ## 重新生成
 * `./build.sh rainbow/v1`
