@@ -57,9 +57,8 @@ message JoinGameReq {
 }
 
 enum GameType {
-  Empty0 = 0;
   // pve
-  Pve = 1;
+  Pve = 0;
   // pvp 1v1
   Pvp1v1 = 2;
   // 多人同屏
@@ -141,3 +140,14 @@ enum SkillState {
   // 就绪
   Ready = 2;
 }
+
+message BrPlayerDie {
+  // 陨落的用户 id | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
+  // 角色 id | @inject_tag: msgpack:"roleId" json:"roleId"
+  int32 roleId = 2;
+  // 在该位置陨落 | @inject_tag: msgpack:"diePos" json:"diePos"
+  RolePosition diePos = 3;
+}
+
+
