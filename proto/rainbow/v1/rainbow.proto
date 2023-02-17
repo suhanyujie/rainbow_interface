@@ -46,3 +46,98 @@ message UserLogin {
   // 用户的 token，一般从平台获取 | @inject_tag: msgpack:"token" json:"token"
   string token = 1;
 }
+
+message JoinGameReq {
+  // 对局id，客户端传过来 | @inject_tag: msgpack:"roomId" json:"roomId"
+  int32 roomId = 1;
+  // 游戏类型 | @inject_tag: msgpack:"roomType" json:"roomType"
+  GameType roomType = 2;
+  // 关卡/难度 | @inject_tag: msgpack:"level" json:"level"
+  int32 level = 3;
+}
+
+enum GameType {
+  Empty0 = 0;
+  // pve
+  Pve = 1;
+  // pvp 1v1
+  Pvp1v1 = 2;
+  // 多人同屏
+  Pvp1vn = 3;
+}
+
+// 玩家加入房间
+message ScPlayerJoin {
+  int32 levelId = 1;
+  RoomDetail room = 2;
+  int32 needMirror = 3;
+}
+
+message RoomDetail {
+  // room id | @inject_tag: msgpack:"id" json:"id"
+  int32 id = 1;
+  // 房间当前用户数量 | @inject_tag: msgpack:"uNum" json:"uNum"
+  uint32 uNum = 2;
+  // 房间内允许的最大玩家数量 | @inject_tag: msgpack:"players" json:"players"
+  repeated Player players = 3;
+}
+
+message Player {
+  // 玩家用户 id | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
+  // 角色的详细信息 | @inject_tag: msgpack:"roleInfo" json:"roleInfo"
+  RoleInfo roleInfo = 2;
+  // 角色的详细信息 | @inject_tag: msgpack:"roleState" json:"roleState"
+  RoleState roleState = 3;
+}
+
+message RoleInfo {
+  // 角色 id | @inject_tag: msgpack:"id" json:"id"
+  int32 id = 1;
+  // @inject_tag: msgpack:"nickname" json:"nickname"
+  string nickname = 2;
+  // 角色相关资源 | @inject_tag: msgpack:"image" json:"image"
+  int32 image = 3;
+  // 品质 | @inject_tag: msgpack:"quality" json:"quality"
+  int32 quality = 4;
+  // 生命值 | @inject_tag: msgpack:"hp" json:"hp"
+  int32 hp = 5;
+  // 防御力 | @inject_tag: msgpack:"def" json:"def"
+  int32 def = 6;
+  // 攻击力 | @inject_tag: msgpack:"atk" json:"atk"
+  int32 atk = 7;
+  // 技能 id | @inject_tag: msgpack:"skillId" json:"skillId"
+  int32 skillId = 8;
+  // 是否是怪物，true 怪物，false 角色 | @inject_tag: msgpack:"isMonster" json:"isMonster"
+  bool isMonster = 9;
+}
+
+message RoleState {
+  // 角色位置 | @inject_tag: msgpack:"pos" json:"pos"
+  RolePosition pos = 1;
+  // 角色技能信息 | @inject_tag: msgpack:"skill" json:"skill"
+  RoleSkill skill = 2;
+}
+
+// 玩家位置信息
+message RolePosition {
+  // x 轴坐标，0~6 一共 7 列 @inject_tag: msgpack:"x" json:"x"
+  int32 x = 1;
+  // y 轴坐标 | @inject_tag: msgpack:"y" json:"y"
+  int32 y = 2;
+}
+
+message RoleSkill {
+  // 技能 id | @inject_tag: msgpack:"id" json:"id"
+  int32 id = 1;
+  // 技能状态 | @inject_tag: msgpack:"state" json:"state"
+  SkillState state = 2;
+}
+
+enum SkillState {
+  SkillStateEmpty0 = 0;
+  // 冷却、充能中
+  Cooling = 1;
+  // 就绪
+  Ready = 2;
+}
