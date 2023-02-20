@@ -150,7 +150,7 @@ message BrPlayerDie {
   RolePosition diePos = 3;
 }
 
-message ScGameEndOf1V1 {
+message BrGameEndOf1V1 {
   // 赢方信息 | @inject_tag: msgpack:"winPlayer" json:"winPlayer"
   Player winPlayer = 1;
   // 败方信息 | @inject_tag: msgpack:"losePlayer" json:"losePlayer"
