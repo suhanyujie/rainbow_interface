@@ -180,3 +180,66 @@ message PlayerSettleInfo {
   // 角色 id | @inject_tag: msgpack:"roleId" json:"roleId"
   int32 roleId = 7;
 }
+
+message ScGetNewRoad {
+  // 若干段路的数据 | @inject_tag: msgpack:"data" json:"data"
+  repeated OnePassageRoad data = 1;
+}
+
+message ScGetNewRoadV1 {
+  // 若干段路的数据 | @inject_tag: msgpack:"data" json:"data"
+  repeated OnePassageRoad data = 1;
+}
+
+// 一段路的格子
+message OnePassageRoad {
+  // 一段路上的若干个格子信息 | @inject_tag: msgpack:"cells" json:"cells"
+  repeated OneCell cells = 1;
+}
+
+// 一个格子
+message OneCell {
+  // 路上的一格，格子信息 | @inject_tag: msgpack:"cellInfo" json:"cellInfo"
+  repeated int32 cellInfo = 1;
+}
+
+message ScBossFightRes {
+  // 角色生命值 | @inject_tag: msgpack:"flag" json:"flag"
+  int32 roleHp = 1;
+  // 获得的金币数 | @inject_tag: msgpack:"goldNum" json:"goldNum"
+  int32 goldNum = 2;
+  // 宝箱掉落情况 | @inject_tag: msgpack:"crates" json:"crates"
+  map<int32, int32> crates = 3;
+  // 先手情况。0表示玩家先手，1表示 boss 先手；| @inject_tag: msgpack:"flag" json:"flag"
+  int32 flag = 4;
+}
+
+message ScPickItemReq {
+  // 玩家的生命值 | @inject_tag: msgpack:"hp" json:"hp"
+  int32 hp = 1;
+  // 玩家的攻击力 | @inject_tag: msgpack:"atk" json:"atk"
+  int32 atk = 2;
+  // 玩家的原初之力 | @inject_tag: msgpack:"power" json:"power"
+  int32 power = 3;
+}
+
+message CsJudgeOpt {
+  // 列，位置的 x 坐标值，从 0 开始计数 | @inject_tag: msgpack:"x" json:"x"
+  int32 x = 1;
+  // 行，位置的 y 坐标值，从 0 开始计数 | @inject_tag: msgpack:"y" json:"y"
+  int32 y = 2;
+  // 操作类型 | @inject_tag: msgpack:"y" json:"y"
+  OperateType opType = 3;
+}
+
+enum OperateType {
+  OptEmpty = 0;
+  // 左滑
+  Left = 1;
+  // 右滑
+  Right = 2;
+  // 连接
+  Concat = 3;
+  // 飞行
+  Fly = 4;
+}
