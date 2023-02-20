@@ -150,4 +150,33 @@ message BrPlayerDie {
   RolePosition diePos = 3;
 }
 
+message ScGameEndOf1V1 {
+  // 赢方信息 | @inject_tag: msgpack:"winPlayer" json:"winPlayer"
+  Player winPlayer = 1;
+  // 败方信息 | @inject_tag: msgpack:"losePlayer" json:"losePlayer"
+  Player losePlayer = 2;
+  // 备注信息 | @inject_tag: msgpack:"desc" json:"desc"
+  string desc = 3;
+  // 结算信息 | @inject_tag: msgpack:"playerSettles" json:"playerSettles"
+  repeated PlayerSettleInfo playerSettles = 4;
+  // 战斗时长，秒数 | @inject_tag: msgpack:"usedTimeSec" json:"usedTimeSec"
+  int32 usedTimeSec = 5;
+}
 
+// 游戏结束后，玩家的结算信息
+message PlayerSettleInfo {
+  // 当前距离 | @inject_tag: msgpack:"curDistance" json:"curDistance"
+  int32 curDistance = 1;
+  // 最高记录的距离 | @inject_tag: msgpack:"maxDistance" json:"maxDistance"
+  int32 maxDistance = 2;
+  // 击杀 boss 的数量 | @inject_tag: msgpack:"killBossNum" json:"killBossNum"
+  int32 killBossNum = 3;
+  // 最高生命值 | @inject_tag: msgpack:"maxHp" json:"maxHp"
+  int32 maxHp = 4;
+  // 最高攻击力 | @inject_tag: msgpack:"maxAtk" json:"maxAtk"
+  int32 maxAtk = 5;
+  // 用户 id | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 6;
+  // 角色 id | @inject_tag: msgpack:"roleId" json:"roleId"
+  int32 roleId = 7;
+}
