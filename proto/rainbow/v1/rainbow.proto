@@ -75,10 +75,8 @@ message ScPlayerJoin {
 message RoomDetail {
   // room id | @inject_tag: msgpack:"id" json:"id"
   int32 id = 1;
-  // 房间当前用户数量 | @inject_tag: msgpack:"uNum" json:"uNum"
-  uint32 uNum = 2;
-  // 房间内允许的最大玩家数量 | @inject_tag: msgpack:"players" json:"players"
-  repeated Player players = 3;
+  // 当前，房间内所有玩家信息 | @inject_tag: msgpack:"players" json:"players"
+  repeated Player players = 2;
 }
 
 message Player {
