@@ -4,31 +4,13 @@ package throw.v1;
 option go_package = "github.com/suhanyujie/throw_interface/proto/rainbow/v1;v1";
 
 // 客户端请求服务端结构
-message IRequest {
-  // @inject_tag: msgpack:"action" json:"action"
-  string action = 1;
-  // @inject_tag: msgpack:"method" json:"method"
-  string method = 2;
-  // @inject_tag: msgpack:"callback" json:"callback"
-  string callback = 3;
-  // @inject_tag: msgpack:"isCompress" json:"isCompress"
-  bool isCompress = 4; // true 表示 data 为 proto 编码的字节数组
-  // @inject_tag: msgpack:"data" json:"data"
-  bytes data = 5;
-}
-
-// 服务端响应客户端的请求，或者给客户端推送消息
-message IResponse {
-  // 0 正常，不为0是异常 | @inject_tag: msgpack:"code" json:"code"
-  int32 code = 1;
-  // 异常时的详细信息 | @inject_tag: msgpack:"msg" json:"msg"
-  string msg = 2;
-  // @inject_tag: msgpack:"isCompress" json:"isCompress"
-  bool isCompress = 3; // true 表示 data 为 proto 编码的字节数组
-  // @inject_tag: msgpack:"data" json:"data"
-  bytes data = 4;    // data 是 proto 编码的字节
-  // @inject_tag: msgpack:"callback" json:"callback"
-  string callback = 5;
+message Message {
+  // 消息 id | @inject_tag: msgpack:"message_id" json:"message_id"
+  int32 messageId = 1;
+  // 用户 id | @inject_tag: msgpack:"uid" json:"uid"
+  int64 uid = 2;
+  // 协议携带的数据 | @inject_tag: msgpack:"data" json:"data"
+  bytes data = 3;
 }
 
 message ErrInfo {
