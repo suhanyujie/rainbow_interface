@@ -31,24 +31,24 @@ message UserLogin {
 
 message JoinGameReq {
   // 平台提供的房间 id，结算时透传。因为是长整，恐前端会溢出，所以用字符串类型。ext 前缀表示 external | @inject_tag: msgpack:"roomId" json:"roomId"
-  string extRoomId = 1;
-  // 平台的对局 id，全局唯一 | @inject_tag: msgpack:"roomId" json:"roomId"
+  optional string extRoomId = 1;
+  // 平台的对局 id，全局唯一 [必填] | @inject_tag: msgpack:"roomId" json:"roomId"
   string extMatchId = 2;
   // 是否与机器人对战 | @inject_tag: msgpack:"needBot" json:"needBot"
-  bool needBot = 3;
+  optional bool needBot = 3;
   // 机器人的 uid | @inject_tag: msgpack:"botId" json:"botId"
-  int32 botId = 4;
+  optional int32 botId = 4;
   // 机器人的 nft | @inject_tag: msgpack:"botNft" json:"botNft"
-  int32 botNft = 5;
+  optional int32 botNft = 5;
   // 门票 | @inject_tag: msgpack:"ticket" json:"ticket"
-  float ticket = 6;
+  optional float ticket = 6;
   // 对战类型，平台参数，区分 1v1，淘汰赛等 | @inject_tag: msgpack:"pvpType" json:"pvpType"
-  int32 pvpType = 7;
-  // 游戏类型 | @inject_tag: msgpack:"roomType" json:"roomType"
+  optional int32 pvpType = 7;
+  // 游戏类型 [必填] | @inject_tag: msgpack:"roomType" json:"roomType"
   GameType roomType = 8;
   // 机器人的 ai 策略类型 | @inject_tag: msgpack:"aiPolicyType" json:"aiPolicyType"
-  int32 aiPolicyType = 9;
-  // 关卡/难度 | @inject_tag: msgpack:"level" json:"level"
+  optional int32 aiPolicyType = 9;
+  // 关卡/难度 [必填] | @inject_tag: msgpack:"level" json:"level"
   int32 level = 10;
 }
 
