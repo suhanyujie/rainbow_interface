@@ -63,8 +63,11 @@ enum GameType {
 
 // 玩家加入房间
 message ScPlayerJoin {
+  // 游戏的关卡 id | @inject_tag: msgpack:"levelId" json:"levelId"
   int32 levelId = 1;
+  // 房间内信息 | @inject_tag: msgpack:"room" json:"room"
   RoomDetail room = 2;
+  // 是否需要镜像,没用到可以先忽略 | @inject_tag: msgpack:"needMirror" json:"needMirror"
   int32 needMirror = 3;
 }
 

@@ -529,9 +529,12 @@ type ScPlayerJoin struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	LevelId    int32       `protobuf:"varint,1,opt,name=levelId,proto3" json:"levelId,omitempty"`
-	Room       *RoomDetail `protobuf:"bytes,2,opt,name=room,proto3" json:"room,omitempty"`
-	NeedMirror int32       `protobuf:"varint,3,opt,name=needMirror,proto3" json:"needMirror,omitempty"`
+	// 游戏的关卡 id | @inject_tag: msgpack:"levelId" json:"levelId"
+	LevelId int32 `protobuf:"varint,1,opt,name=levelId,proto3" json:"levelId" msgpack:"levelId"`
+	// 房间内信息 | @inject_tag: msgpack:"room" json:"room"
+	Room *RoomDetail `protobuf:"bytes,2,opt,name=room,proto3" json:"room" msgpack:"room"`
+	// 是否需要镜像,没用到可以先忽略 | @inject_tag: msgpack:"needMirror" json:"needMirror"
+	NeedMirror int32 `protobuf:"varint,3,opt,name=needMirror,proto3" json:"needMirror" msgpack:"needMirror"`
 }
 
 func (x *ScPlayerJoin) Reset() {
