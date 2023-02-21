@@ -6,7 +6,7 @@ option go_package = "github.com/suhanyujie/throw_interface/proto/rainbow/v1;v1";
 // 客户端请求服务端结构
 message Message {
   // 消息 id | @inject_tag: msgpack:"message_id" json:"message_id"
-  int32 message_id = 1;
+  string message_id = 1;
   // 用户 id | @inject_tag: msgpack:"uid" json:"uid"
   int64 uid = 2;
   // 协议携带的数据 | @inject_tag: msgpack:"data" json:"data"
