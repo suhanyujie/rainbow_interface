@@ -74,9 +74,9 @@ enum GameType {
   // pve
   Pve = 0;
   // pvp 1v1
-  Pvp1v1 = 2;
+  Pvp1v1 = 1;
   // 多人同屏
-  Pvp1vn = 3;
+  Pvp1vn = 2;
 }
 
 // 玩家加入房间
