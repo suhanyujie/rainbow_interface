@@ -399,10 +399,10 @@ type JoinGameReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// 平台提供的房间 id，结算时透传。因为是长整，恐前端会溢出，所以用字符串类型。ext 前缀表示 external | @inject_tag: msgpack:"roomId" json:"roomId"
-	ExtRoomId *string `protobuf:"bytes,1,opt,name=extRoomId,proto3,oneof" json:"roomId" msgpack:"roomId"`
-	// 平台的对局 id，全局唯一 [必填] | @inject_tag: msgpack:"roomId" json:"roomId"
-	ExtMatchId string `protobuf:"bytes,2,opt,name=extMatchId,proto3" json:"roomId" msgpack:"roomId"`
+	// 平台提供的房间 id，结算时透传。因为是长整，恐前端会溢出，所以用字符串类型。ext 前缀表示 external | @inject_tag: msgpack:"extRoomId" json:"extRoomId"
+	ExtRoomId *string `protobuf:"bytes,1,opt,name=extRoomId,proto3,oneof" json:"extRoomId" msgpack:"extRoomId"`
+	// 平台的对局 id，全局唯一 [必填] | @inject_tag: msgpack:"extMatchId" json:"extMatchId"
+	ExtMatchId string `protobuf:"bytes,2,opt,name=extMatchId,proto3" json:"extMatchId" msgpack:"extMatchId"`
 	// 是否与机器人对战 | @inject_tag: msgpack:"needBot" json:"needBot"
 	NeedBot *bool `protobuf:"varint,3,opt,name=needBot,proto3,oneof" json:"needBot" msgpack:"needBot"`
 	// 机器人的 uid | @inject_tag: msgpack:"botId" json:"botId"
