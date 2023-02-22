@@ -242,3 +242,23 @@ enum OperateType {
   // 弹起
   Bounce = 4;
 }
+
+message BrPickItem {
+  int32 uid = 1;
+  // 奖励类型 | @inject_tag: msgpack:"awardType" json:"awardType"
+  AwardType awardType = 2;
+  // 对应的值,如生命值,攻击力等.可能是负值 | @inject_tag: msgpack:"awardVal" json:"awardVal"
+  int32 awardVal = 3;
+  // 属性更新后的最终值 | @inject_tag: msgpack:"awardVal" json:"awardVal"
+  int32 resVal = 4;
+}
+
+enum AwardType {
+  AwardTypeEmpty = 0;
+  // 生命值
+  Hp = 1;
+  // 攻击力
+  Atk = 2;
+  // 原初之力
+  Power = 3;
+}

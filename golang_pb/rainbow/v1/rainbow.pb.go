@@ -182,6 +182,61 @@ func (OperateType) EnumDescriptor() ([]byte, []int) {
 	return file_rainbow_proto_rawDescGZIP(), []int{2}
 }
 
+type AwardType int32
+
+const (
+	AwardType_AwardTypeEmpty AwardType = 0
+	// 生命值
+	AwardType_Hp AwardType = 1
+	// 攻击力
+	AwardType_Atk AwardType = 2
+	// 原初之力
+	AwardType_Power AwardType = 3
+)
+
+// Enum value maps for AwardType.
+var (
+	AwardType_name = map[int32]string{
+		0: "AwardTypeEmpty",
+		1: "Hp",
+		2: "Atk",
+		3: "Power",
+	}
+	AwardType_value = map[string]int32{
+		"AwardTypeEmpty": 0,
+		"Hp":             1,
+		"Atk":            2,
+		"Power":          3,
+	}
+)
+
+func (x AwardType) Enum() *AwardType {
+	p := new(AwardType)
+	*p = x
+	return p
+}
+
+func (x AwardType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (AwardType) Descriptor() protoreflect.EnumDescriptor {
+	return file_rainbow_proto_enumTypes[3].Descriptor()
+}
+
+func (AwardType) Type() protoreflect.EnumType {
+	return &file_rainbow_proto_enumTypes[3]
+}
+
+func (x AwardType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use AwardType.Descriptor instead.
+func (AwardType) EnumDescriptor() ([]byte, []int) {
+	return file_rainbow_proto_rawDescGZIP(), []int{3}
+}
+
 // 客户端请求服务端结构
 type Message struct {
 	state         protoimpl.MessageState
@@ -1668,6 +1723,80 @@ func (x *CsJudgeOpt) GetOpType() OperateType {
 	return OperateType_OptEmpty
 }
 
+type BrPickItem struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid int32 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	// 奖励类型 | @inject_tag: msgpack:"awardType" json:"awardType"
+	AwardType AwardType `protobuf:"varint,2,opt,name=awardType,proto3,enum=throw.v1.AwardType" json:"awardType" msgpack:"awardType"`
+	// 对应的值,如生命值,攻击力等.可能是负值 | @inject_tag: msgpack:"awardVal" json:"awardVal"
+	AwardVal int32 `protobuf:"varint,3,opt,name=awardVal,proto3" json:"awardVal" msgpack:"awardVal"`
+	// 属性更新后的最终值 | @inject_tag: msgpack:"awardVal" json:"awardVal"
+	ResVal int32 `protobuf:"varint,4,opt,name=resVal,proto3" json:"awardVal" msgpack:"awardVal"`
+}
+
+func (x *BrPickItem) Reset() {
+	*x = BrPickItem{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rainbow_proto_msgTypes[22]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BrPickItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BrPickItem) ProtoMessage() {}
+
+func (x *BrPickItem) ProtoReflect() protoreflect.Message {
+	mi := &file_rainbow_proto_msgTypes[22]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BrPickItem.ProtoReflect.Descriptor instead.
+func (*BrPickItem) Descriptor() ([]byte, []int) {
+	return file_rainbow_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *BrPickItem) GetUid() int32 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *BrPickItem) GetAwardType() AwardType {
+	if x != nil {
+		return x.AwardType
+	}
+	return AwardType_AwardTypeEmpty
+}
+
+func (x *BrPickItem) GetAwardVal() int32 {
+	if x != nil {
+		return x.AwardVal
+	}
+	return 0
+}
+
+func (x *BrPickItem) GetResVal() int32 {
+	if x != nil {
+		return x.ResVal
+	}
+	return 0
+}
+
 var File_rainbow_proto protoreflect.FileDescriptor
 
 var file_rainbow_proto_rawDesc = []byte{
@@ -1830,22 +1959,34 @@ var file_rainbow_proto_rawDesc = []byte{
 	0x01, 0x79, 0x12, 0x2d, 0x0a, 0x06, 0x6f, 0x70, 0x54, 0x79, 0x70, 0x65, 0x18, 0x03, 0x20, 0x01,
 	0x28, 0x0e, 0x32, 0x15, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31, 0x2e, 0x4f, 0x70,
 	0x65, 0x72, 0x61, 0x74, 0x65, 0x54, 0x79, 0x70, 0x65, 0x52, 0x06, 0x6f, 0x70, 0x54, 0x79, 0x70,
-	0x65, 0x2a, 0x2b, 0x0a, 0x08, 0x47, 0x61, 0x6d, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x07, 0x0a,
-	0x03, 0x50, 0x76, 0x65, 0x10, 0x00, 0x12, 0x0a, 0x0a, 0x06, 0x50, 0x76, 0x70, 0x31, 0x76, 0x31,
-	0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x50, 0x76, 0x70, 0x31, 0x76, 0x6e, 0x10, 0x02, 0x2a, 0x3a,
-	0x0a, 0x0a, 0x53, 0x6b, 0x69, 0x6c, 0x6c, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x14, 0x0a, 0x10,
-	0x53, 0x6b, 0x69, 0x6c, 0x6c, 0x53, 0x74, 0x61, 0x74, 0x65, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x30,
-	0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07, 0x43, 0x6f, 0x6f, 0x6c, 0x69, 0x6e, 0x67, 0x10, 0x01, 0x12,
-	0x09, 0x0a, 0x05, 0x52, 0x65, 0x61, 0x64, 0x79, 0x10, 0x02, 0x2a, 0x48, 0x0a, 0x0b, 0x4f, 0x70,
-	0x65, 0x72, 0x61, 0x74, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x0c, 0x0a, 0x08, 0x4f, 0x70, 0x74,
-	0x45, 0x6d, 0x70, 0x74, 0x79, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x4c, 0x65, 0x66, 0x74, 0x10,
-	0x01, 0x12, 0x09, 0x0a, 0x05, 0x52, 0x69, 0x67, 0x68, 0x74, 0x10, 0x02, 0x12, 0x0a, 0x0a, 0x06,
-	0x43, 0x6f, 0x6e, 0x63, 0x61, 0x74, 0x10, 0x03, 0x12, 0x0a, 0x0a, 0x06, 0x42, 0x6f, 0x75, 0x6e,
-	0x63, 0x65, 0x10, 0x04, 0x42, 0x3b, 0x5a, 0x39, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63,
-	0x6f, 0x6d, 0x2f, 0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75, 0x6a, 0x69, 0x65, 0x2f, 0x74, 0x68,
-	0x72, 0x6f, 0x77, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x2f, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x2f, 0x72, 0x61, 0x69, 0x6e, 0x62, 0x6f, 0x77, 0x2f, 0x76, 0x31, 0x3b, 0x76,
-	0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x22, 0x85, 0x01, 0x0a, 0x0a, 0x42, 0x72, 0x50, 0x69, 0x63, 0x6b, 0x49, 0x74, 0x65, 0x6d,
+	0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x75,
+	0x69, 0x64, 0x12, 0x31, 0x0a, 0x09, 0x61, 0x77, 0x61, 0x72, 0x64, 0x54, 0x79, 0x70, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x13, 0x2e, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x2e, 0x76, 0x31,
+	0x2e, 0x41, 0x77, 0x61, 0x72, 0x64, 0x54, 0x79, 0x70, 0x65, 0x52, 0x09, 0x61, 0x77, 0x61, 0x72,
+	0x64, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x61, 0x77, 0x61, 0x72, 0x64, 0x56, 0x61,
+	0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x61, 0x77, 0x61, 0x72, 0x64, 0x56, 0x61,
+	0x6c, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x56, 0x61, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x06, 0x72, 0x65, 0x73, 0x56, 0x61, 0x6c, 0x2a, 0x2b, 0x0a, 0x08, 0x47, 0x61, 0x6d,
+	0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x07, 0x0a, 0x03, 0x50, 0x76, 0x65, 0x10, 0x00, 0x12, 0x0a,
+	0x0a, 0x06, 0x50, 0x76, 0x70, 0x31, 0x76, 0x31, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x50, 0x76,
+	0x70, 0x31, 0x76, 0x6e, 0x10, 0x02, 0x2a, 0x3a, 0x0a, 0x0a, 0x53, 0x6b, 0x69, 0x6c, 0x6c, 0x53,
+	0x74, 0x61, 0x74, 0x65, 0x12, 0x14, 0x0a, 0x10, 0x53, 0x6b, 0x69, 0x6c, 0x6c, 0x53, 0x74, 0x61,
+	0x74, 0x65, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x30, 0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07, 0x43, 0x6f,
+	0x6f, 0x6c, 0x69, 0x6e, 0x67, 0x10, 0x01, 0x12, 0x09, 0x0a, 0x05, 0x52, 0x65, 0x61, 0x64, 0x79,
+	0x10, 0x02, 0x2a, 0x48, 0x0a, 0x0b, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x65, 0x54, 0x79, 0x70,
+	0x65, 0x12, 0x0c, 0x0a, 0x08, 0x4f, 0x70, 0x74, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x10, 0x00, 0x12,
+	0x08, 0x0a, 0x04, 0x4c, 0x65, 0x66, 0x74, 0x10, 0x01, 0x12, 0x09, 0x0a, 0x05, 0x52, 0x69, 0x67,
+	0x68, 0x74, 0x10, 0x02, 0x12, 0x0a, 0x0a, 0x06, 0x43, 0x6f, 0x6e, 0x63, 0x61, 0x74, 0x10, 0x03,
+	0x12, 0x0a, 0x0a, 0x06, 0x42, 0x6f, 0x75, 0x6e, 0x63, 0x65, 0x10, 0x04, 0x2a, 0x3b, 0x0a, 0x09,
+	0x41, 0x77, 0x61, 0x72, 0x64, 0x54, 0x79, 0x70, 0x65, 0x12, 0x12, 0x0a, 0x0e, 0x41, 0x77, 0x61,
+	0x72, 0x64, 0x54, 0x79, 0x70, 0x65, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x10, 0x00, 0x12, 0x06, 0x0a,
+	0x02, 0x48, 0x70, 0x10, 0x01, 0x12, 0x07, 0x0a, 0x03, 0x41, 0x74, 0x6b, 0x10, 0x02, 0x12, 0x09,
+	0x0a, 0x05, 0x50, 0x6f, 0x77, 0x65, 0x72, 0x10, 0x03, 0x42, 0x3b, 0x5a, 0x39, 0x67, 0x69, 0x74,
+	0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x75, 0x68, 0x61, 0x6e, 0x79, 0x75, 0x6a,
+	0x69, 0x65, 0x2f, 0x74, 0x68, 0x72, 0x6f, 0x77, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61,
+	0x63, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x72, 0x61, 0x69, 0x6e, 0x62, 0x6f, 0x77,
+	0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1860,59 +2001,62 @@ func file_rainbow_proto_rawDescGZIP() []byte {
 	return file_rainbow_proto_rawDescData
 }
 
-var file_rainbow_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_rainbow_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
+var file_rainbow_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+var file_rainbow_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_rainbow_proto_goTypes = []interface{}{
 	(GameType)(0),            // 0: throw.v1.GameType
 	(SkillState)(0),          // 1: throw.v1.SkillState
 	(OperateType)(0),         // 2: throw.v1.OperateType
-	(*Message)(nil),          // 3: throw.v1.Message
-	(*ErrInfo)(nil),          // 4: throw.v1.ErrInfo
-	(*NormalInfo)(nil),       // 5: throw.v1.NormalInfo
-	(*UserLogin)(nil),        // 6: throw.v1.UserLogin
-	(*JoinGameReq)(nil),      // 7: throw.v1.JoinGameReq
-	(*ScPlayerJoin)(nil),     // 8: throw.v1.ScPlayerJoin
-	(*RoomDetail)(nil),       // 9: throw.v1.RoomDetail
-	(*Player)(nil),           // 10: throw.v1.Player
-	(*RoleInfo)(nil),         // 11: throw.v1.RoleInfo
-	(*RoleState)(nil),        // 12: throw.v1.RoleState
-	(*RolePosition)(nil),     // 13: throw.v1.RolePosition
-	(*RoleSkill)(nil),        // 14: throw.v1.RoleSkill
-	(*BrPlayerDie)(nil),      // 15: throw.v1.BrPlayerDie
-	(*BrGameEndOf1V1)(nil),   // 16: throw.v1.BrGameEndOf1V1
-	(*PlayerSettleInfo)(nil), // 17: throw.v1.PlayerSettleInfo
-	(*ScGetNewRoad)(nil),     // 18: throw.v1.ScGetNewRoad
-	(*ScGetNewRoadV1)(nil),   // 19: throw.v1.ScGetNewRoadV1
-	(*OnePassageRoad)(nil),   // 20: throw.v1.OnePassageRoad
-	(*OneCell)(nil),          // 21: throw.v1.OneCell
-	(*ScBossFightRes)(nil),   // 22: throw.v1.ScBossFightRes
-	(*ScPickItemReq)(nil),    // 23: throw.v1.ScPickItemReq
-	(*CsJudgeOpt)(nil),       // 24: throw.v1.CsJudgeOpt
-	nil,                      // 25: throw.v1.ScBossFightRes.CratesEntry
+	(AwardType)(0),           // 3: throw.v1.AwardType
+	(*Message)(nil),          // 4: throw.v1.Message
+	(*ErrInfo)(nil),          // 5: throw.v1.ErrInfo
+	(*NormalInfo)(nil),       // 6: throw.v1.NormalInfo
+	(*UserLogin)(nil),        // 7: throw.v1.UserLogin
+	(*JoinGameReq)(nil),      // 8: throw.v1.JoinGameReq
+	(*ScPlayerJoin)(nil),     // 9: throw.v1.ScPlayerJoin
+	(*RoomDetail)(nil),       // 10: throw.v1.RoomDetail
+	(*Player)(nil),           // 11: throw.v1.Player
+	(*RoleInfo)(nil),         // 12: throw.v1.RoleInfo
+	(*RoleState)(nil),        // 13: throw.v1.RoleState
+	(*RolePosition)(nil),     // 14: throw.v1.RolePosition
+	(*RoleSkill)(nil),        // 15: throw.v1.RoleSkill
+	(*BrPlayerDie)(nil),      // 16: throw.v1.BrPlayerDie
+	(*BrGameEndOf1V1)(nil),   // 17: throw.v1.BrGameEndOf1V1
+	(*PlayerSettleInfo)(nil), // 18: throw.v1.PlayerSettleInfo
+	(*ScGetNewRoad)(nil),     // 19: throw.v1.ScGetNewRoad
+	(*ScGetNewRoadV1)(nil),   // 20: throw.v1.ScGetNewRoadV1
+	(*OnePassageRoad)(nil),   // 21: throw.v1.OnePassageRoad
+	(*OneCell)(nil),          // 22: throw.v1.OneCell
+	(*ScBossFightRes)(nil),   // 23: throw.v1.ScBossFightRes
+	(*ScPickItemReq)(nil),    // 24: throw.v1.ScPickItemReq
+	(*CsJudgeOpt)(nil),       // 25: throw.v1.CsJudgeOpt
+	(*BrPickItem)(nil),       // 26: throw.v1.BrPickItem
+	nil,                      // 27: throw.v1.ScBossFightRes.CratesEntry
 }
 var file_rainbow_proto_depIdxs = []int32{
 	0,  // 0: throw.v1.JoinGameReq.roomType:type_name -> throw.v1.GameType
-	9,  // 1: throw.v1.ScPlayerJoin.room:type_name -> throw.v1.RoomDetail
-	10, // 2: throw.v1.RoomDetail.players:type_name -> throw.v1.Player
-	11, // 3: throw.v1.Player.roleInfo:type_name -> throw.v1.RoleInfo
-	12, // 4: throw.v1.Player.roleState:type_name -> throw.v1.RoleState
-	13, // 5: throw.v1.RoleState.pos:type_name -> throw.v1.RolePosition
-	14, // 6: throw.v1.RoleState.skill:type_name -> throw.v1.RoleSkill
+	10, // 1: throw.v1.ScPlayerJoin.room:type_name -> throw.v1.RoomDetail
+	11, // 2: throw.v1.RoomDetail.players:type_name -> throw.v1.Player
+	12, // 3: throw.v1.Player.roleInfo:type_name -> throw.v1.RoleInfo
+	13, // 4: throw.v1.Player.roleState:type_name -> throw.v1.RoleState
+	14, // 5: throw.v1.RoleState.pos:type_name -> throw.v1.RolePosition
+	15, // 6: throw.v1.RoleState.skill:type_name -> throw.v1.RoleSkill
 	1,  // 7: throw.v1.RoleSkill.state:type_name -> throw.v1.SkillState
-	13, // 8: throw.v1.BrPlayerDie.diePos:type_name -> throw.v1.RolePosition
-	10, // 9: throw.v1.BrGameEndOf1V1.winPlayer:type_name -> throw.v1.Player
-	10, // 10: throw.v1.BrGameEndOf1V1.losePlayer:type_name -> throw.v1.Player
-	17, // 11: throw.v1.BrGameEndOf1V1.playerSettles:type_name -> throw.v1.PlayerSettleInfo
-	20, // 12: throw.v1.ScGetNewRoad.data:type_name -> throw.v1.OnePassageRoad
-	20, // 13: throw.v1.ScGetNewRoadV1.data:type_name -> throw.v1.OnePassageRoad
-	21, // 14: throw.v1.OnePassageRoad.cells:type_name -> throw.v1.OneCell
-	25, // 15: throw.v1.ScBossFightRes.crates:type_name -> throw.v1.ScBossFightRes.CratesEntry
+	14, // 8: throw.v1.BrPlayerDie.diePos:type_name -> throw.v1.RolePosition
+	11, // 9: throw.v1.BrGameEndOf1V1.winPlayer:type_name -> throw.v1.Player
+	11, // 10: throw.v1.BrGameEndOf1V1.losePlayer:type_name -> throw.v1.Player
+	18, // 11: throw.v1.BrGameEndOf1V1.playerSettles:type_name -> throw.v1.PlayerSettleInfo
+	21, // 12: throw.v1.ScGetNewRoad.data:type_name -> throw.v1.OnePassageRoad
+	21, // 13: throw.v1.ScGetNewRoadV1.data:type_name -> throw.v1.OnePassageRoad
+	22, // 14: throw.v1.OnePassageRoad.cells:type_name -> throw.v1.OneCell
+	27, // 15: throw.v1.ScBossFightRes.crates:type_name -> throw.v1.ScBossFightRes.CratesEntry
 	2,  // 16: throw.v1.CsJudgeOpt.opType:type_name -> throw.v1.OperateType
-	17, // [17:17] is the sub-list for method output_type
-	17, // [17:17] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	3,  // 17: throw.v1.BrPickItem.awardType:type_name -> throw.v1.AwardType
+	18, // [18:18] is the sub-list for method output_type
+	18, // [18:18] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_rainbow_proto_init() }
@@ -2185,6 +2329,18 @@ func file_rainbow_proto_init() {
 				return nil
 			}
 		}
+		file_rainbow_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BrPickItem); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_rainbow_proto_msgTypes[4].OneofWrappers = []interface{}{}
 	type x struct{}
@@ -2192,8 +2348,8 @@ func file_rainbow_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_rainbow_proto_rawDesc,
-			NumEnums:      3,
-			NumMessages:   23,
+			NumEnums:      4,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
