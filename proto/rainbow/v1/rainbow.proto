@@ -30,9 +30,9 @@ message UserLogin {
 }
 
 message JoinGameReq {
-  // 平台提供的房间 id，结算时透传。因为是长整，恐前端会溢出，所以用字符串类型。ext 前缀表示 external | @inject_tag: msgpack:"roomId" json:"roomId"
+  // 平台提供的房间 id，结算时透传。因为是长整，恐前端会溢出，所以用字符串类型。ext 前缀表示 external | @inject_tag: msgpack:"extRoomId" json:"extRoomId"
   optional string extRoomId = 1;
-  // 平台的对局 id，全局唯一 [必填] | @inject_tag: msgpack:"roomId" json:"roomId"
+  // 平台的对局 id，全局唯一 [必填] | @inject_tag: msgpack:"extMatchId" json:"extMatchId"
   string extMatchId = 2;
   // 是否与机器人对战 | @inject_tag: msgpack:"needBot" json:"needBot"
   optional bool needBot = 3;
