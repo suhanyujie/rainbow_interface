@@ -239,6 +239,6 @@ enum OperateType {
   Right = 2;
   // 连接
   Concat = 3;
-  // 飞行
-  Fly = 4;
+  // 弹起
+  Bounce = 4;
 }
