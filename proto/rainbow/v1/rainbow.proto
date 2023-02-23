@@ -280,3 +280,8 @@ message BrRolePositions {
   //房间内玩家信息 | @inject_tag: msgpack:"roomDetail" json:"roomDetail"
   RoomDetail roomDetail = 2;
 }
+
+message ScGetRolePos {
+  // 当前玩家的角色位置信息 | @inject_tag: msgpack:"pos" json:"pos"
+  RolePosition pos = 1;
+}
