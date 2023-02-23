@@ -160,6 +160,8 @@ message BrGameEndOf1V1 {
   repeated PlayerSettleInfo playerSettles = 4;
   // 战斗时长，秒数 | @inject_tag: msgpack:"usedTimeSec" json:"usedTimeSec"
   int32 usedTimeSec = 5;
+  // 当前用户 id | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 6;
 }
 
 // 游戏结束后，玩家的结算信息
