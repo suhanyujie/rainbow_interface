@@ -78,6 +78,8 @@ message RoomDetail {
   int32 id = 1;
   // 当前，房间内所有玩家信息 | @inject_tag: msgpack:"players" json:"players"
   repeated Player players = 2;
+  // 房间内需要多少人才能开始游戏 | @inject_tag: msgpack:"maxUserNum" json:"maxUserNum"
+  int32 maxUserNum = 3;
 }
 
 message Player {
