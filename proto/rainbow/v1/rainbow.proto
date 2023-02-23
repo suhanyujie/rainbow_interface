@@ -271,3 +271,10 @@ message BrPlayerRollback {
   // 角色所在坐标 | @inject_tag: msgpack:"newPos" json:"newPos"
   RolePosition newPos = 2;
 }
+
+message BrRolePositions {
+  // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
+  //房间内玩家信息 | @inject_tag: msgpack:"roomDetail" json:"roomDetail"
+  RoomDetail roomDetail = 2;
+}
