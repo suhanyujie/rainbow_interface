@@ -227,7 +227,7 @@ message CsJudgeOpt {
   int32 x = 1;
   // 行，位置的 y 坐标值，从 0 开始计数 | @inject_tag: msgpack:"y" json:"y"
   int32 y = 2;
-  // 操作类型 | @inject_tag: msgpack:"y" json:"y"
+  // 操作类型 | @inject_tag: msgpack:"opType" json:"opType"
   OperateType opType = 3;
 }
 
@@ -250,7 +250,7 @@ message BrPickItem {
   AwardType awardType = 2;
   // 对应的值,如生命值,攻击力等.可能是负值 | @inject_tag: msgpack:"awardVal" json:"awardVal"
   int32 awardVal = 3;
-  // 属性更新后的最终值 | @inject_tag: msgpack:"awardVal" json:"awardVal"
+  // 属性更新后的最终值 | @inject_tag: msgpack:"resVal" json:"resVal"
   int32 resVal = 4;
 }
 
@@ -273,8 +273,6 @@ message BrPlayerRollback {
 }
 
 message BrRolePositions {
-  // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
-  int32 uid = 1;
   //房间内玩家信息 | @inject_tag: msgpack:"roomDetail" json:"roomDetail"
   RoomDetail roomDetail = 2;
 }
