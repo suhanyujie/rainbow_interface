@@ -244,6 +244,7 @@ enum OperateType {
 }
 
 message BrPickItem {
+  // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
   int32 uid = 1;
   // 奖励类型 | @inject_tag: msgpack:"awardType" json:"awardType"
   AwardType awardType = 2;
@@ -261,4 +262,12 @@ enum AwardType {
   Atk = 2;
   // 原初之力
   Power = 3;
+}
+
+// 玩家掉落后,复活后回退数格后的位置信息
+message BrPlayerRollback {
+  // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
+  // 角色所在坐标 | @inject_tag: msgpack:"newPos" json:"newPos"
+  RolePosition newPos = 2;
 }
