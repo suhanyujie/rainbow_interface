@@ -164,6 +164,18 @@ message BrGameEndOf1V1 {
   repeated PlayerSettleInfo playerSettles = 4;
   // 战斗时长，秒数 | @inject_tag: msgpack:"usedTimeSec" json:"usedTimeSec"
   int32 usedTimeSec = 5;
+  // 游戏结束原因信息 | @inject_tag: msgpack:"gameOverInfo" json:"gameOverInfo"
+  GameOverType gameOverType = 6;
+}
+
+enum GameOverType {
+  GOT_Empty = 0;
+  // 角色掉落
+  RoleDie = 1;
+  // 角色都掉落
+  RoleAllDie = 2;
+  // 枢纽战斗死亡
+  FightDie = 3;
 }
 
 // 游戏结束后，玩家的结算信息
@@ -286,4 +298,9 @@ message BrRolePositions {
 message ScGetRolePos {
   // 当前玩家的角色位置信息 | @inject_tag: msgpack:"pos" json:"pos"
   RolePosition pos = 1;
+}
+
+message BrRoleReachPivot {
+  // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
 }
