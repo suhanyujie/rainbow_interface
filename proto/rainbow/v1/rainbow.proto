@@ -303,4 +303,6 @@ message ScGetRolePos {
 message BrRoleReachPivot {
   // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
   int32 uid = 1;
+  // 枢纽的 y 坐标值 | @inject_tag: msgpack:"pivotY" json:"pivotY"
+  int32 pivotY = 2;
 }
