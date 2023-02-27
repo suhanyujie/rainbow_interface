@@ -196,6 +196,8 @@ message PlayerSettleInfo {
   int32 roleId = 7;
   // 玩家获得的代币数,如果是负数,则表示输掉的 | @inject_tag: msgpack:"gainToken" json:"gainToken"
   int32 gainToken = 8;
+  // 超过多少玩家的百分比，eg: 0.67 | @inject_tag: msgpack:"moreThanPercent" json:"moreThanPercent"
+  float moreThanPercent = 9;
 }
 
 message ScGetNewRoad {
