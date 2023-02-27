@@ -308,8 +308,10 @@ message BrRoleReachPivot {
 }
 
 message BrGameStart {
+  // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
   // 路程总长度 | @inject_tag: msgpack:"allDistance" json:"allDistance"
-  int32 allDistance = 1;
+  int32 allDistance = 2;
   //房间内玩家信息 | @inject_tag: msgpack:"roomDetail" json:"roomDetail"
-  RoomDetail roomDetail = 2;
+  RoomDetail roomDetail = 3;
 }
