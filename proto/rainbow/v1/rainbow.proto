@@ -196,8 +196,8 @@ message PlayerSettleInfo {
   int32 roleId = 7;
   // 玩家获得的代币数,如果是负数,则表示输掉的 | @inject_tag: msgpack:"gainToken" json:"gainToken"
   int32 gainToken = 8;
-  // 击倒对手的攻击次数 | @inject_tag: msgpack:"hitNum" json:"hitNum"
-  float hitNum = 9;
+  // 击倒对手的攻击次数，胜方才有该值 | @inject_tag: msgpack:"hitNum" json:"hitNum"
+  int32 hitNum = 9;
 }
 
 message ScGetNewRoad {
