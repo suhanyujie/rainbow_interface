@@ -306,3 +306,10 @@ message BrRoleReachPivot {
   // 枢纽的 y 坐标值 | @inject_tag: msgpack:"pivotY" json:"pivotY"
   int32 pivotY = 2;
 }
+
+message BrGameStart {
+  // 路程总长度 | @inject_tag: msgpack:"allDistance" json:"allDistance"
+  int32 allDistance = 1;
+  //房间内玩家信息 | @inject_tag: msgpack:"roomDetail" json:"roomDetail"
+  RoomDetail roomDetail = 2;
+}
