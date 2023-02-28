@@ -48,8 +48,8 @@ message JoinGameReq {
   GameType roomType = 8;
   // 机器人的 ai 策略类型 | @inject_tag: msgpack:"aiPolicyType" json:"aiPolicyType"
   optional int32 aiPolicyType = 9;
-  // 关卡/难度 [必填] | @inject_tag: msgpack:"level" json:"level"
-  int32 level = 10;
+  // 关卡/难度 [必填] | @inject_tag: msgpack:"levelId" json:"levelId"
+  int32 levelId = 10;
 }
 
 enum GameType {
