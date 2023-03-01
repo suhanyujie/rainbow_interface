@@ -198,12 +198,12 @@ message PlayerSettleInfo {
   int32 gainToken = 8;
   // 1v1时，击倒对手的攻击次数，胜方才有该值 | @inject_tag: msgpack:"hitNum" json:"hitNum"
   int32 hitNum = 9;
-  // 攻击别人的次数 | @inject_tag: msgpack:"hitOtherNum" json:"hitOtherNum"
-  int32 hitOtherNum = 10;
   // 被攻击次数 | @inject_tag: msgpack:"beHitNum" json:"beHitNum"
   int32 beHitNum = 11;
   // 秒伤 | @inject_tag: msgpack:"hurtPerSec" json:"hurtPerSec"
   int32 hurtPerSec = 12;
+  // 使用技能次数 | @inject_tag: msgpack:"usedSkillNum" json:"usedSkillNum"
+  int32 usedSkillNum = 13;
 }
 
 message ScGetNewRoad {
