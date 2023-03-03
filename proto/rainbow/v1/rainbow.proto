@@ -409,4 +409,33 @@ message ScSkillShadow {
   repeated int32 xList = 4;
 }
 
+message ScSkillDeBuffHp {
+  // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
+  // 持续时间 | @inject_tag: msgpack:"keepSec" json:"keepSec"
+  int32 keepSec = 2;
+  // 生命值每秒降低的值 | @inject_tag: msgpack:"valPerSec" json:"valPerSec"
+  int32 valPerSec = 3;
+}
+
+message ScSkillDeBuffAtk {
+  // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
+  // 持续时间 | @inject_tag: msgpack:"keepSec" json:"keepSec"
+  int32 keepSec = 2;
+  // 降低的值 | @inject_tag: msgpack:"val" json:"val"
+  int32 val = 3;
+}
+
+message ScSkillBuffAtk {
+  // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
+  // 持续时间 | @inject_tag: msgpack:"keepSec" json:"keepSec"
+  int32 keepSec = 2;
+  // 降低的值 | @inject_tag: msgpack:"val" json:"val"
+  int32 val = 3;
+}
+
+
+
 
