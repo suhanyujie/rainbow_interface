@@ -106,12 +106,14 @@ message RoleInfo {
   int32 def = 6;
   // 攻击力 | @inject_tag: msgpack:"atk" json:"atk"
   int32 atk = 7;
+  // 原初之力值 | @inject_tag: msgpack:"power" json:"power"
+  int32 power = 8;
   // 技能 id | @inject_tag: msgpack:"skillId" json:"skillId"
-  int32 skillId = 8;
+  int32 skillId = 9;
   // 是否是怪物，true 怪物，false 角色 | @inject_tag: msgpack:"isMonster" json:"isMonster"
-  bool isMonster = 9;
+  bool isMonster = 10;
   // 角色对应的 nftId | @inject_tag: msgpack:"nftId" json:"nftId"
-  int32 nftId = 10;
+  int32 nftId = 11;
 }
 
 message RoleState {
@@ -134,6 +136,8 @@ message RoleSkill {
   int32 id = 1;
   // 技能状态 | @inject_tag: msgpack:"state" json:"state"
   SkillState state = 2;
+  // 技能目标。如果目标是自己，则传自己的 uid | @inject_tag: msgpack:"targetUid" json:"targetUid"
+  int32 targetUid = 3;
 }
 
 enum SkillState {
@@ -323,3 +327,86 @@ message BrGameStart {
   //房间内玩家信息 | @inject_tag: msgpack:"roomDetail" json:"roomDetail"
   RoomDetail roomDetail = 3;
 }
+
+message CsUseSkill {
+  // 技能目标。如果目标是自己，则传自己的 uid | @inject_tag: msgpack:"targetUid" json:"targetUid"
+  int32 targetUid = 1;
+}
+
+enum EffectType {
+//  Effect0Normal = 0; // 普攻
+//  Effect1KeepDecrHp = 1; // 持续掉血
+//  Effect2ComboHit = 2; // 连击
+//  Effect3ExtraHurt = 3; // 额外伤害
+//  Effect4Rigidity = 4; // 僵直
+//  Effect5DecrDef = 5; // 防御降低
+//  Effect6BackWoundTime = 6; // 反伤时间
+//  Effect7BackWoundTimes = 7; // 反伤次数
+//  Effect8Hot = 8; // hot
+//  Effect9IncrAtk = 9; // 攻击提升
+//  Effect10Weak = 10; // 虚弱
+//  Effect11Shield = 11; // 护盾
+//  Effect12Thorns = 12; // 荆棘
+//  Effect13IncrDef = 13; // 防御提升
+//  Effect14 = 14; // 防御提升
+
+    Effect0Normal = 0; // 普攻
+    Effect1KeepDecrHp = 1; // 位移
+    Effect2Rigidity = 2; // 僵直
+    Effect3Fog = 3; // 迷雾
+}
+
+// 技能：位移
+message ScSkillDisplacement {
+  // 位移后的位置 | @inject_tag: msgpack:"newPos" json:"newPos"
+  RolePosition newPos = 1;
+}
+
+// 技能效果生效信息
+message ScSkillEffectInfo {
+  // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
+  // 持续时间 | @inject_tag: msgpack:"keepSec" json:"keepSec"
+  int32 keepSec = 2;
+  // 技能效果类型 | @inject_tag: msgpack:"effType" json:"effType"
+  EffectType effType = 3;
+}
+
+// 技能：迷雾
+message ScSkillFog {
+  // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
+  // 持续时间 | @inject_tag: msgpack:"keepSec" json:"keepSec"
+  int32 keepSec = 2;
+  // 横向格子数 | @inject_tag: msgpack:"xNum" json:"xNum"
+  int32 xNum = 4;
+  // 纵向格子数 | @inject_tag: msgpack:"yNum" json:"yNum"
+  int32 yNum = 5;
+}
+
+// 技能：吸收
+message ScSkillAttract {
+  // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
+  // 持续时间 | @inject_tag: msgpack:"keepSec" json:"keepSec"
+  int32 keepSec = 2;
+  // 向前范围的格子数 | @inject_tag: msgpack:"yNum" json:"yNum"
+  int32 yNum = 4;
+  // 可吸取的石格类型列表 | @inject_tag: msgpack:"stTypes" json:"stTypes"
+  // 石格类型：100原初之力+1；102 hp+；104 hp-；106 atk+；108 atk-
+  repeated int32 stTypes = 5;
+}
+
+// 技能：分身
+message ScSkillShadow {
+  // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
+  // 持续时间 | @inject_tag: msgpack:"keepSec" json:"keepSec"
+  int32 keepSec = 2;
+  // 分身数量 | @inject_tag: msgpack:"num" json:"num"
+  int32 num = 3;
+  // 分身出现在这些 x 坐标位置，y 坐标与本体一致 | @inject_tag: msgpack:"xList" json:"xList"
+  repeated int32 xList = 4;
+}
+
+
