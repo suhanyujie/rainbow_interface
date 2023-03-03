@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package throw.v1;
+package rainbow.v1;
 option go_package = "github.com/suhanyujie/throw_interface/proto/rainbow/v1;v1";
 
 // 客户端请求服务端结构
@@ -436,6 +436,83 @@ message ScSkillBuffAtk {
   int32 val = 3;
 }
 
+message ScSkillFloat {
+  // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
+  // 持续时间 | @inject_tag: msgpack:"keepSec" json:"keepSec"
+  int32 keepSec = 2;
+}
+
+message ScSkillSprint {
+  // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
+  // 距离，格子数 | @inject_tag: msgpack:"distanceNum" json:"distanceNum"
+  int32 distanceNum = 2;
+  // 单位时间内，y 方向上移动的的格子数 | @inject_tag: msgpack:"speed" json:"speed"
+  int32 speed = 3;
+}
+
+// 技能：抵挡伤害
+message ScSkillResistHurt {
+  // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
+  // 次数 | @inject_tag: msgpack:"times" json:"times"
+  int32 times = 2;
+  // 抵挡的伤害系数 | @inject_tag: msgpack:"scale" json:"scale"
+  float scale = 3;
+}
+
+// buff 效果
+// ref: https://zhuanlan.zhihu.com/p/150812545
+message Buff {
+  // 生效类型。按次数生效或这时间生效 | @inject_tag: msgpack:"effMode" json:"effMode"
+  BuffEffMode effMode = 1;
+  // buff 优先级，低优先级不能打断高优先级 buff | @inject_tag: msgpack:"priority" json:"priority"
+  int32 priority = 2;
+  // buff 开始生效的时间戳 | @inject_tag: msgpack:"startTime" json:"startTime"
+  int32 startTime = 3;
+  // buff 生效结束的时间戳 | @inject_tag: msgpack:"endTime" json:"endTime"
+  int32 endTime = 4;
+  // 对应的技能效果类型 | @inject_tag: msgpack:"skillEffType" json:"skillEffType"
+  int32 skillEffType = 5;
+  // buff 作用的角色属性 | @inject_tag: msgpack:"effRoleAttr" json:"effRoleAttr"
+  BuffRoleAttr effRoleAttr = 6;
+  // buff 的控制效果 | @inject_tag: msgpack:"controlEff" json:"controlEff"
+  ControlEff controlEff = 7;
+}
+
+// buff 生效类型
+enum BuffEffMode {
+  BuffEffModeEmpty = 0;
+  // 按次数生效
+  Times = 1;
+  // 按时间生效
+  TimeSec = 2;
+}
+
+enum BuffRoleAttr {
+  BuffRoleAttrEmpty = 0;
+  RoleAttrHp = 1;
+  RoleAttrAtk = 2;
+}
+
+enum ControlEff {
+  ControlEffEmpty = 0;
+  // 僵直
+  CEff_Rigidity = 1;
+  // 眩晕
+  CEff_Stun = 2;
+  // 沉默
+  CEff_Silence = 3;
+  // 无敌
+  CEff_Invincible = 4;
+  // 隐身
+  CEff_Invisible = 5;
+  // 冲刺
+  CEff_Sprint = 6;
+  // 漂浮
+  CEff_Float = 7;
+}
 
 
 
