@@ -315,7 +315,9 @@ message BrPlayerRollback {
 
 message BrRolePositions {
   //房间内玩家信息 | @inject_tag: msgpack:"roomDetail" json:"roomDetail"
-  RoomDetail roomDetail = 2;
+  RoomDetail roomDetail = 1;
+  // 当前服务器时间，秒级时间戳 | @inject_tag: msgpack:"serverTime" json:"serverTime"
+  int32 serverTime = 2;
 }
 
 message ScGetRolePos {
