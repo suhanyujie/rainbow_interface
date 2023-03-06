@@ -316,8 +316,10 @@ message BrPlayerRollback {
 message BrRolePositions {
   //房间内玩家信息 | @inject_tag: msgpack:"roomDetail" json:"roomDetail"
   RoomDetail roomDetail = 1;
-  // 游戏开始多久了，秒数 | @inject_tag: msgpack:"gameHasKeptSec" json:"gameHasKeptSec"
+  // 游戏开始多久了，毫秒 | @inject_tag: msgpack:"gameHasKeptSec" json:"gameHasKeptSec"
   int32 gameHasKeptSec = 2;
+  // 服务器时间，毫秒时间戳 | @inject_tag: msgpack:"serverTime" json:"serverTime"
+  uint64 serverTime = 3;
 }
 
 message ScGetRolePos {
@@ -525,6 +527,18 @@ enum ControlEff {
   CEff_Sprint = 6;
   // 漂浮
   CEff_Float = 7;
+}
+
+message ScPlayerGameEndFor1vN {
+  // 阵亡的玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
+  // 各个玩家的排名 | @inject_tag: msgpack:"ranks" json:"ranks"
+  repeated Player ranks = 2;
+}
+
+message ScGetServerTime {
+  // 当前服务器的时间，毫秒时间戳 | @inject_tag: msgpack:"timestamp" json:"timestamp"
+  uint64 timestamp = 1;
 }
 
 
