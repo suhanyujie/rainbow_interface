@@ -73,6 +73,8 @@ message ScPlayerJoin {
   int32 needMirror = 4;
   // 是否是新的对局 | @inject_tag: msgpack:"isNewMatch" json:"isNewMatch"
   bool isNewMatch = 5;
+  // 游戏已经开始多久了。秒 | @inject_tag: msgpack:"gameHasKeptSec" json:"gameHasKeptSec"
+  int32 gameHasKeptSec = 6;
 }
 
 message RoomDetail {
@@ -177,6 +179,8 @@ message BrGameEndOf1V1 {
   int32 usedTimeSec = 5;
   // 游戏结束原因信息 | @inject_tag: msgpack:"gameOverInfo" json:"gameOverInfo"
   GameOverType gameOverType = 6;
+  // 房间内玩家排名信息 | @inject_tag: msgpack:"rankedPlayers" json:"rankedPlayers"
+  repeated Player rankedPlayers = 7;
 }
 
 enum GameOverType {
