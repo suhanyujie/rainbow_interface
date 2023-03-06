@@ -148,6 +148,11 @@ enum SkillState {
   Ready = 2;
 }
 
+message CsGetNewRoadV1 {
+  // 需要的地图片段索引 | @inject_tag: msgpack:"idx" json:"idx"
+  int32 idx = 1;
+}
+
 message BrPlayerDie {
   // 陨落的用户 id | @inject_tag: msgpack:"uid" json:"uid"
   int32 uid = 1;
