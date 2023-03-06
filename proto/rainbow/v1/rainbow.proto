@@ -71,6 +71,8 @@ message ScPlayerJoin {
   RoomDetail room = 3;
   // 是否需要镜像,没用到可以先忽略 | @inject_tag: msgpack:"needMirror" json:"needMirror"
   int32 needMirror = 4;
+  // 是否是新的对局 | @inject_tag: msgpack:"isNewMatch" json:"isNewMatch"
+  bool isNewMatch = 5;
 }
 
 message RoomDetail {
