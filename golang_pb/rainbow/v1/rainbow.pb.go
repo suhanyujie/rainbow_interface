@@ -3705,8 +3705,8 @@ type ScReleaseSkillBeforeInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// 推荐的目标 uid | @inject_tag: msgpack:"recTargetRoleId" json:"recTargetRoleId"
-	RecTargetUid int32 `protobuf:"varint,1,opt,name=recTargetUid,proto3" json:"recTargetRoleId" msgpack:"recTargetRoleId"`
+	// 推荐的目标 uid | @inject_tag: msgpack:"recTargetUid" json:"recTargetUid"
+	RecTargetUid int32 `protobuf:"varint,1,opt,name=recTargetUid,proto3" json:"recTargetUid" msgpack:"recTargetUid"`
 	// 推荐的目标角色 id | @inject_tag: msgpack:"recTargetRoleId" json:"recTargetRoleId"
 	RecTargetRoleId int32 `protobuf:"varint,2,opt,name=recTargetRoleId,proto3" json:"recTargetRoleId" msgpack:"recTargetRoleId"`
 }
