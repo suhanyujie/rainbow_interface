@@ -576,4 +576,12 @@ message ScBeAtkBySkill {
   int32 skillId = 2;
 }
 
+// 施放技能的前置信息，可用于在按钮上展示施放目标的头像
+message ScReleaseSkillBeforeInfo {
+  // 推荐的目标 uid | @inject_tag: msgpack:"recTargetRoleId" json:"recTargetRoleId"
+  int32 recTargetUid = 1;
+  // 推荐的目标角色 id | @inject_tag: msgpack:"recTargetRoleId" json:"recTargetRoleId"
+  int32 recTargetRoleId = 2;
+}
+
 
