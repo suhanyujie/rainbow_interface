@@ -369,6 +369,15 @@ enum EffectType {
     Effect1KeepDecrHp = 1; // 位移
     Effect2Rigidity = 2; // 僵直
     Effect3Fog = 3; // 迷雾
+    Effect4ResistHurt = 4;// 抵消伤害
+    Effect5Attract = 5;// 吸收
+    Effect6Shadow = 6;// 分身
+    Effect7DeBuffHp = 7;// 降低生命
+    Effect8DeBuffAtk = 8;// 降低攻击
+    Effect9Sprint = 9;// 冲刺
+    Effect10BuffAtk = 10;// 提高攻击力
+    Effect11Float = 11;// 漂浮
+
 }
 
 // 技能：位移
@@ -482,20 +491,24 @@ message ScSkillResistHurt {
 message Buff {
   // 生效类型。按次数生效或这时间生效 | @inject_tag: msgpack:"effMode" json:"effMode"
   BuffEffMode effMode = 1;
+  // 生效类型下对应的值。eg:按次数生效，这里存储剩余次数 | @inject_tag: msgpack:"effModeValue" json:"effModeValue"
+  int32 effModeValue = 2;
   // buff 优先级，低优先级不能打断高优先级 buff | @inject_tag: msgpack:"priority" json:"priority"
-  int32 priority = 2;
+  int32 priority = 3;
   // buff 开始生效的时间戳 | @inject_tag: msgpack:"startTime" json:"startTime"
-  int32 startTime = 3;
+  int32 startTime = 4;
   // buff 生效结束的时间戳 | @inject_tag: msgpack:"endTime" json:"endTime"
-  int32 endTime = 4;
+  int32 endTime = 5;
+  // 对应的技能效果 id | @inject_tag: msgpack:"skillEffId" json:"skillEffId"
+  int32 skillEffId = 6;
   // 对应的技能效果类型 | @inject_tag: msgpack:"skillEffType" json:"skillEffType"
-  int32 skillEffType = 5;
+  int32 skillEffType = 7;
   // buff 作用的角色属性 | @inject_tag: msgpack:"effRoleAttr" json:"effRoleAttr"
-  BuffRoleAttr effRoleAttr = 6;
+  BuffRoleAttr effRoleAttr = 8;
   // buff 的控制效果 | @inject_tag: msgpack:"controlEff" json:"controlEff"
-  ControlEff controlEff = 7;
+  ControlEff controlEff = 9;
   // buff 的生效时机。eg:被攻击前生效/被攻击后生效/被攻击时生效/攻击别人前生效/攻击后生效 etc | @inject_tag: msgpack:"effTiming" json:"effTiming"
-  EffTiming effTiming = 8;
+  EffTiming effTiming = 10;
 }
 
 enum EffTiming {
