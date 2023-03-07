@@ -494,6 +494,18 @@ message Buff {
   BuffRoleAttr effRoleAttr = 6;
   // buff 的控制效果 | @inject_tag: msgpack:"controlEff" json:"controlEff"
   ControlEff controlEff = 7;
+  // buff 的生效时机。eg:被攻击前生效/被攻击后生效/被攻击时生效/攻击别人前生效/攻击后生效 etc | @inject_tag: msgpack:"effTiming" json:"effTiming"
+  EffTiming effTiming = 8;
+}
+
+enum EffTiming {
+  EffTimingEmpty = 0;
+  AtkBefore = 1; // 攻击前
+  AtkWhen = 2; // 攻击时
+  AtkAfter = 3;// 攻击后
+  BeAtkBefore = 4; // 被攻击前
+  BeAtkWhen = 5; // 被攻击时
+  BeAtkAfter = 6;// 被攻击后
 }
 
 // buff 生效类型
@@ -507,7 +519,9 @@ enum BuffEffMode {
 
 enum BuffRoleAttr {
   BuffRoleAttrEmpty = 0;
+  // 角色属性-生命值
   RoleAttrHp = 1;
+  // 角色属性-攻击力
   RoleAttrAtk = 2;
 }
 
@@ -541,5 +555,12 @@ message ScGetServerTime {
   uint64 timestamp = 1;
 }
 
+// 收到其他玩家的技能攻击
+message ScBeAtkBySkill {
+  // 技能施放者 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
+  // 技能 id | @inject_tag: msgpack:"skillId" json:"skillId"
+  int32 skillId = 2;
+}
 
 
