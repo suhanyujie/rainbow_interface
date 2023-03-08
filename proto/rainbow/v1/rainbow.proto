@@ -386,7 +386,7 @@ message ScSkillDisplacement {
   RolePosition newPos = 1;
 }
 
-// 技能效果生效信息
+// 技能效果生效信息-僵直
 message ScSkillEffectInfo {
   // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
   int32 fromUid = 1;
@@ -394,6 +394,8 @@ message ScSkillEffectInfo {
   int32 keepSec = 2;
   // 技能效果类型 | @inject_tag: msgpack:"effType" json:"effType"
   EffectType effType = 3;
+  // 受影响的玩家 id | @inject_tag: msgpack:"effUidArr" json:"effUidArr"
+  repeated int32 effUidArr = 4;
 }
 
 // 技能：迷雾
