@@ -404,10 +404,14 @@ message ScSkillFog {
   int32 fromUid = 1;
   // 持续时间 | @inject_tag: msgpack:"keepSec" json:"keepSec"
   int32 keepSec = 2;
-  // 横向格子数 | @inject_tag: msgpack:"xNum" json:"xNum"
+  // 横向格子数.eg:3,表示从当前纵坐标开始向左数3列，再向右数3列，这个范围内的有雾 | @inject_tag: msgpack:"xNum" json:"xNum"
   int32 xNum = 4;
   // 纵向格子数 | @inject_tag: msgpack:"yNum" json:"yNum"
   int32 yNum = 5;
+  // 区域类型。2前方最近；5后方最近；10前方，特定格子数 | @inject_tag: msgpack:"rangeType" json:"rangeType"
+  int32 rangeType = 6;
+  // 受影响的玩家 uid 列表 | @inject_tag: msgpack:"effUidArr" json:"effUidArr"
+  repeated int32 effUidArr = 7;
 }
 
 // 技能：吸收
