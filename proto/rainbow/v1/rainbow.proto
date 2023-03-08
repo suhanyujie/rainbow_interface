@@ -415,10 +415,17 @@ message ScSkillAttract {
   // 持续时间 | @inject_tag: msgpack:"keepSec" json:"keepSec"
   int32 keepSec = 2;
   // 向前范围的格子数 | @inject_tag: msgpack:"yNum" json:"yNum"
-  int32 yNum = 4;
+  int32 yNum = 3;
   // 可吸取的石格类型列表 | @inject_tag: msgpack:"stTypes" json:"stTypes"
   // 石格类型：100原初之力+1；102 hp+；104 hp-；106 atk+；108 atk-
-  repeated int32 stTypes = 5;
+  // repeated int32 stTypes = 4;
+  // 可吸收的格子位置列表 | @inject_tag: msgpack:"stones" json:"stones"
+  repeated OneStone stones = 5;
+}
+
+message OneStone {
+  // 一个格子信息 | @inject_tag: msgpack:"stone" json:"stone"
+  repeated int32 stone = 1;
 }
 
 // 技能：分身
