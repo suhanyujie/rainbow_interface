@@ -553,6 +553,10 @@ message Buff {
   ControlEff controlEff = 9;
   // buff 的生效时机。eg:被攻击前生效/被攻击后生效/被攻击时生效/攻击别人前生效/攻击后生效 etc | @inject_tag: msgpack:"effTiming" json:"effTiming"
   EffTiming effTiming = 10;
+  // 效果发起人 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 11;
+  // 效果相关的参数值 | @inject_tag: msgpack:"effValues" json:"effValues"
+  repeated string effValues = 12;
 }
 
 enum EffTiming {
