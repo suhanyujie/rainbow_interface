@@ -438,6 +438,24 @@ message OneStone {
   repeated int32 stone = 1;
 }
 
+// 角色施放技能广播
+message BrRoleSkillRelease {
+  // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
+  // 技能 id | @inject_tag: msgpack:"skillId" json:"skillId"
+  int32 skillId = 2;
+  // 技能效果 id，一个技能会有多个效果，逐个结算效果 | @inject_tag: msgpack:"effId" json:"effId"
+  int32 effId = 3;
+  // 技能效果类型 | @inject_tag: msgpack:"effType" json:"effType"
+  EffectType effType = 4;
+  // 技能施放的时间戳，毫秒 | @inject_tag: msgpack:"startTime" json:"startTime"
+  int64 startTime = 5;
+  // 施放的目标 uid 列表 | @inject_tag: msgpack:"effUidArr" json:"effUidArr"
+  repeated int32 effUidArr = 6;
+  // 技能效果结算相关值，多个数值，可能是浮点数，整数 | @inject_tag: msgpack:"effValues" json:"effValues"
+  repeated string effValues = 7;
+}
+
 // 技能：分身
 message ScSkillShadow {
   // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
