@@ -454,6 +454,8 @@ message BrRoleSkillRelease {
   repeated int32 effUidArr = 6;
   // 技能效果结算相关值，多个数值，可能是浮点数，整数 | @inject_tag: msgpack:"effValues" json:"effValues"
   repeated string effValues = 7;
+  // 可吸收的格子位置列表 | @inject_tag: msgpack:"stones" json:"stones"
+  repeated OneStone stones = 8;
 }
 
 // 技能：分身
