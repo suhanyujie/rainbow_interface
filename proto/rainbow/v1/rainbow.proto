@@ -366,7 +366,7 @@ enum EffectType {
 //  Effect14 = 14; // 防御提升
 
     Effect0Normal = 0; // 普攻
-    Effect1KeepDecrHp = 1; // 位移
+    Effect1Displacement = 1; // 位移
     Effect2Rigidity = 2; // 僵直
     Effect3Fog = 3; // 迷雾
     Effect4ResistHurt = 4;// 抵消伤害
@@ -497,6 +497,11 @@ message ScSkillResistHurt {
   int32 times = 2;
   // 抵挡的伤害系数 | @inject_tag: msgpack:"scale" json:"scale"
   float scale = 3;
+}
+
+message ScSkillResistHurtEnd {
+  // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
+  int32 fromUid = 1;
 }
 
 // buff 效果
