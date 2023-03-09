@@ -396,6 +396,8 @@ message ScSkillEffectInfo {
   EffectType effType = 3;
   // 受影响的玩家 id | @inject_tag: msgpack:"effUidArr" json:"effUidArr"
   repeated int32 effUidArr = 4;
+  // 施术的时间，毫秒时间戳 | @inject_tag: msgpack:"startTime" json:"startTime"
+  int64 startTime = 5;
 }
 
 // 技能：迷雾
@@ -412,6 +414,8 @@ message ScSkillFog {
   int32 rangeType = 6;
   // 受影响的玩家 uid 列表 | @inject_tag: msgpack:"effUidArr" json:"effUidArr"
   repeated int32 effUidArr = 7;
+  // 施术的时间，毫秒时间戳 | @inject_tag: msgpack:"startTime" json:"startTime"
+  int64 startTime = 8;
 }
 
 // 技能：吸收
