@@ -557,6 +557,8 @@ message Buff {
   int32 fromUid = 11;
   // 效果相关的参数值 | @inject_tag: msgpack:"effValues" json:"effValues"
   repeated string effValues = 12;
+  // 受效果影响的用户 id 列表 | @inject_tag: msgpack:"effUidList" json:"effUidList"
+  repeated string effUidList = 13;
 }
 
 enum EffTiming {
