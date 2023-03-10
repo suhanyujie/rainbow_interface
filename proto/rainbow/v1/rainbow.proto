@@ -337,6 +337,8 @@ message BrRoleReachPivot {
 message BrRolePivotFightEnd {
   // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
   int32 uid = 1;
+  // 是否胜利 | @inject_tag: msgpack:"isWin" json:"isWin"
+  bool isWin = 2;
 }
 
 message BrGameStart {
