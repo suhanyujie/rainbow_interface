@@ -643,4 +643,13 @@ message ScReleaseSkillBeforeInfo {
   int32 recTargetRoleId = 2;
 }
 
+message BrRoleAttrUpdate {
+  // 阵亡的玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
+  // 角色更新的属性类型 | @inject_tag: msgpack:"attrType" json:"attrType"
+  BuffRoleAttr attrType = 2;
+  // 角色更新的属性类型 | @inject_tag: msgpack:"attrType" json:"attrType"
+  int32 value = 3;
+}
+
 
