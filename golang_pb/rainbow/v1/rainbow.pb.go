@@ -4109,6 +4109,7 @@ func (x *ScReleaseSkillBeforeInfo) GetRecTargetRoleId() int32 {
 	return 0
 }
 
+// 角色属性更新广播
 type BrRoleAttrUpdate struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
