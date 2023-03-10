@@ -334,6 +334,11 @@ message BrRoleReachPivot {
   int32 pivotY = 2;
 }
 
+message BrRolePivotFightEnd {
+  // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
+  int32 uid = 1;
+}
+
 message BrGameStart {
   // 玩家 uid | @inject_tag: msgpack:"uid" json:"uid"
   int32 uid = 1;
