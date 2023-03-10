@@ -219,6 +219,17 @@ message PlayerSettleInfo {
   int32 hurtPerSec = 12;
   // 使用技能次数 | @inject_tag: msgpack:"usedSkillNum" json:"usedSkillNum"
   int32 usedSkillNum = 13;
+
+  // nft 分值、战力 | @inject_tag: msgpack:"nftScore" json:"nftScore"
+  int32 nftScore = 14;
+  // 推荐场次的游戏 id | @inject_tag: msgpack:"recGameId" json:"recGameId"
+  optional int32 recGameId = 15;
+  // 推荐场次的门票 | @inject_tag: msgpack:"recTicket" json:"recTicket"
+  optional float recTicket = 16;
+  // 推荐场次的奖励 | @inject_tag: msgpack:"recReward" json:"recReward"
+  optional float recReward = 17;
+  // 推荐场次的图片地址 | @inject_tag: msgpack:"recGameImg" json:"recGameImg"
+  optional string recGameImg = 18;
 }
 
 message ScGetNewRoad {
