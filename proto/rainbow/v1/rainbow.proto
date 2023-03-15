@@ -50,6 +50,8 @@ message JoinGameReq {
   optional int32 aiPolicyType = 9;
   // 关卡/难度 [必填] | @inject_tag: msgpack:"levelId" json:"levelId"
   int32 levelId = 10;
+  // 对局的总人数 | @inject_tag: msgpack:"num" json:"num"
+  int32 num = 11;
 }
 
 enum GameType {
@@ -492,6 +494,13 @@ message BrRoleSkillReleaseEnd {
   EffectType effType = 4;
   // 施放技能的玩家 | @inject_tag: msgpack:"fromUid" json:"fromUid"
   int32 fromUid = 5;
+  // 技能结束后，同步一些数据 | @inject_tag: msgpack:"data" json:"data"
+  bytes data = 6;
+}
+
+message BrRoleSkillEndForShadow {
+  // 分身施放结束后，角色属性信息 | @inject_tag: msgpack:"player" json:"player"
+  Player player = 1;
 }
 
 // 技能：分身
