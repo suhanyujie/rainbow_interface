@@ -52,6 +52,8 @@ message JoinGameReq {
   int32 levelId = 10;
   // 对局的总人数 | @inject_tag: msgpack:"num" json:"num"
   int32 num = 11;
+  // 玩家的角色对应的 nft id | @inject_tag: msgpack:"nftId" json:"nftId"
+  int32 nftId = 12;
 }
 
 enum GameType {
