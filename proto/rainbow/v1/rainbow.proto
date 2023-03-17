@@ -167,7 +167,21 @@ message BrPlayerDie {
   // 角色 id | @inject_tag: msgpack:"roleId" json:"roleId"
   int32 roleId = 2;
   // 在该位置陨落 | @inject_tag: msgpack:"diePos" json:"diePos"
-  RolePosition diePos = 3;
+  OneStone diePos = 3;
+  // 死亡原因 | @inject_tag: msgpack:"dieReason" json:"dieReason"
+  PlayerDieReason dieReason = 4;
+}
+
+enum PlayerDieReason {
+  DieReason_Empty = 0;
+  // 掉落
+  Fall = 1;
+  // 陷进
+  Snare = 2;
+  // 生命值为 0
+  HpZero = 3;
+  // 枢纽对战输了
+  PivotDefeat = 4;
 }
 
 message BrGameEndOf1V1 {
