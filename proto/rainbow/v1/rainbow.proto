@@ -54,6 +54,8 @@ message JoinGameReq {
   int32 num = 11;
   // 玩家的角色对应的 nft id | @inject_tag: msgpack:"nftId" json:"nftId"
   int32 nftId = 12;
+  // 和 roomType 参数一样，只不过是一个新的参数名 | @inject_tag: msgpack:"gameMode" json:"gameMode"
+  GameType gameMode = 13;
 }
 
 enum GameType {
