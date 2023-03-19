@@ -13,9 +13,12 @@ message Message {
   bytes data = 3;
 }
 
+// 异常时的错误信息
 message ErrInfo {
+  // 错误码 | @inject_tag: msgpack:"code" json:"code"
+  int32 code = 1;
   // 备注信息 | @inject_tag: msgpack:"msg" json:"msg"
-  string msg = 1;
+  string msg = 2;
 }
 
 message NormalInfo {
