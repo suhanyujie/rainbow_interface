@@ -61,6 +61,7 @@ message JoinGameReq {
   GameType gameMode = 13;
 }
 
+// 也即  gameMode
 enum GameType {
   // pve
   Pve = 0;
@@ -84,6 +85,8 @@ message ScPlayerJoin {
   bool isNewMatch = 5;
   // 游戏已经开始多久了。秒 | @inject_tag: msgpack:"gameHasKeptSec" json:"gameHasKeptSec"
   int32 gameHasKeptSec = 6;
+  // 游戏模式 | @inject_tag: msgpack:"gameMode" json:"gameMode"
+  GameType gameMode = 7;
 }
 
 message RoomDetail {
