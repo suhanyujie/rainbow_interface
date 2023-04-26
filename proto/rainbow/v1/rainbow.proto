@@ -717,4 +717,16 @@ message BrRoleAttrUpdate {
   int32 value = 3;
 }
 
-
+// pve 推送玩家阵亡，询问玩家是否进行复活
+message PvePlayerDieQueryRevive {
+  // 本方信息 | @inject_tag: msgpack:"player" json:"player"
+  Player player = 1;
+  // 备注信息 | @inject_tag: msgpack:"desc" json:"desc"
+  string desc = 2;
+  // 结算信息 | @inject_tag: msgpack:"playerSettles" json:"playerSettles"
+  PlayerSettleInfo playerSettle = 3;
+  // 战斗时长，秒数 | @inject_tag: msgpack:"usedTimeSec" json:"usedTimeSec"
+  int32 usedTimeSec = 4;
+  // 游戏结束原因信息 | @inject_tag: msgpack:"gameOverInfo" json:"gameOverInfo"
+  GameOverType gameOverType = 5;
+}
