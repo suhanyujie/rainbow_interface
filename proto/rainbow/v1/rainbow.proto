@@ -718,7 +718,7 @@ message BrRoleAttrUpdate {
 }
 
 // pve 推送玩家阵亡，询问玩家是否进行复活
-message PvePlayerDieQueryRevive {
+message ScPvePlayerDieQueryRevive {
   // 本方信息 | @inject_tag: msgpack:"player" json:"player"
   Player player = 1;
   // 备注信息 | @inject_tag: msgpack:"desc" json:"desc"
