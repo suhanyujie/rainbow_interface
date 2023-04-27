@@ -730,3 +730,15 @@ message ScPvePlayerDieQueryRevive {
   // 游戏结束原因信息 | @inject_tag: msgpack:"gameOverInfo" json:"gameOverInfo"
   GameOverType gameOverType = 5;
 }
+
+// 使用道具请求，如：复活
+message CsUsingPropReq {
+  // 是否使用道具 | @inject_tag: msgpack:"isUsingProp" json:"isUsingProp"
+  bool isUsingProp = 1;
+  // 使用道具的 id | @inject_tag: msgpack:"propId" json:"propId"
+  int32 propId = 2;
+  // 道具的数量 | @inject_tag: msgpack:"num" json:"num"
+  int32 num = 3;
+}
+
+
