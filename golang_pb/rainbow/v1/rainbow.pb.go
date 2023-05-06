@@ -4515,8 +4515,8 @@ type ScPvePlayerDieQueryRevive struct {
 	Player *Player `protobuf:"bytes,1,opt,name=player,proto3" json:"player" msgpack:"player"`
 	// 备注信息 | @inject_tag: msgpack:"desc" json:"desc"
 	Desc string `protobuf:"bytes,2,opt,name=desc,proto3" json:"desc" msgpack:"desc"`
-	// 结算信息 | @inject_tag: msgpack:"playerSettles" json:"playerSettles"
-	PlayerSettle *PlayerSettleInfo `protobuf:"bytes,3,opt,name=playerSettle,proto3" json:"playerSettles" msgpack:"playerSettles"`
+	// 结算信息 | @inject_tag: msgpack:"playerSettle" json:"playerSettle"
+	PlayerSettle *PlayerSettleInfo `protobuf:"bytes,3,opt,name=playerSettle,proto3" json:"playerSettle" msgpack:"playerSettle"`
 	// 战斗时长，秒数 | @inject_tag: msgpack:"usedTimeSec" json:"usedTimeSec"
 	UsedTimeSec int32 `protobuf:"varint,4,opt,name=usedTimeSec,proto3" json:"usedTimeSec" msgpack:"usedTimeSec"`
 	// 游戏结束原因信息 | @inject_tag: msgpack:"gameOverInfo" json:"gameOverInfo"

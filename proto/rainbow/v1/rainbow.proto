@@ -723,7 +723,7 @@ message ScPvePlayerDieQueryRevive {
   Player player = 1;
   // 备注信息 | @inject_tag: msgpack:"desc" json:"desc"
   string desc = 2;
-  // 结算信息 | @inject_tag: msgpack:"playerSettles" json:"playerSettles"
+  // 结算信息 | @inject_tag: msgpack:"playerSettle" json:"playerSettle"
   PlayerSettleInfo playerSettle = 3;
   // 战斗时长，秒数 | @inject_tag: msgpack:"usedTimeSec" json:"usedTimeSec"
   int32 usedTimeSec = 4;
