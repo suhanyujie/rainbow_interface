@@ -741,4 +741,11 @@ message CsUsingPropReq {
   int32 num = 3;
 }
 
+message ScUsingPropReq {
+  // 使用是否成功 | @inject_tag: msgpack:"isOk" json:"isOk"
+  bool isOk = 1;
+  // 备注 | @inject_tag: msgpack:"msg" json:"msg"
+  string msg = 2;
+}
+
 
